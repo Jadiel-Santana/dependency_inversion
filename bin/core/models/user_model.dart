@@ -1,17 +1,17 @@
-class Users {
+class UserModel {
   final int userId;
   final int id;
   final String title;
   final bool completed;
 
-  Users({
+  UserModel({
     required this.userId,
     required this.id,
     required this.title,
     required this.completed,
   });
 
-  Map<String, dynamic> toMap() {
+  Map<String, dynamic> toJson() {
     return {
       'userId': userId,
       'id': id,
@@ -20,8 +20,8 @@ class Users {
     };
   }
 
-  factory Users.fromMap(Map<String, dynamic> map) {
-    return Users(
+  factory UserModel.fromJson(Map<String, dynamic> map) {
+    return UserModel(
       userId: map['userId'] as int,
       id: map['id'] as int,
       title: map['title'] as String,
@@ -31,6 +31,6 @@ class Users {
 
   @override
   String toString() {
-    return 'Users{userId: $userId, id: $id, title: $title, completed: $completed}';
+    return 'UserModel{userId: $userId, id: $id, title: $title, completed: $completed}';
   }
 }

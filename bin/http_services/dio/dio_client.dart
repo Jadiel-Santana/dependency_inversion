@@ -7,6 +7,12 @@ class DioClient implements HttpService {
   DioClient(this._dio);
 
   @override
-  Future get(String url) async => (await _dio.get(url)).data;
-
+  Future get(String url) async {
+    final response = await _dio.get(url);
+    if (response.statusCode == 200) {
+      return response.data;
+    } else {
+      throw Exception('Erro ao acessar o Servidor');
+    }
+  }
 }

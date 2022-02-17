@@ -9,6 +9,11 @@ class HttpClient implements HttpService {
 
   @override
   Future get(String url) async {
-    return jsonDecode((await _http.get(Uri.parse(url))).body);
+    final response = await _http.get(Uri.parse(url));
+    if (response.statusCode == 200) {
+      return jsonDecode(response.body);
+    } else {
+      throw Exception('Erro ao acessar o Servidor');
+    }
   }
 }
